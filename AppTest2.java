@@ -1,18 +1,21 @@
 package waitExample;
 
-import java.util.concurrent.TimeUnit;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-public class AppTest {
+public class AppTest2 {
 	protected WebDriver driver;
 	@Test
 	public void guru99tutorials() throws InterruptedException 
 	{
+	//System.setProperty ("webdriver.chrome.driver",".\\chromedriver.exe" );
 	driver = new ChromeDriver(); 
-	driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
+	WebDriverWait wait=new WebDriverWait(driver, 20);
 	String eTitle = "Demo Guru99 Page";
 	String aTitle = "" ;
 	// launch Chrome and redirect it to the Base URL
@@ -22,15 +25,16 @@ public class AppTest {
 	//get the actual value of the title
 	aTitle = driver.getTitle();
 	//compare the actual title with the expected title
-	if (aTitle.equals(eTitle))
+	if (aTitle.contentEquals(eTitle))
 	{
 	System.out.println( "Test Passed") ;
 	}
 	else {
 	System.out.println( "Test Failed" );
 	}
-	//close browser
-	driver.close();
-}
+	WebElement guru99seleniumlink;
+	guru99seleniumlink= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath( "/html/body/div[1]/section/div[2]/div/div[1]/div/div[1]/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/div/a/i")));
+	guru99seleniumlink.click();
+	}
 
 }
