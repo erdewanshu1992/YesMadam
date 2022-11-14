@@ -1,42 +1,51 @@
-package pages;
+package LiveWebPages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CartPage {
 	WebDriver driver;
-	By ChangProduct = By.xpath("//span[@class='change_prdt']");//
-	By Done = By.xpath("//button[@class='done_btn']"); //
-	By Remove = By.xpath("//span[@class='remove_prdt']");//
-	By RemoveNo = By.xpath("//button[@class='no_btn']");//
-	By Checkout = By.xpath("//span[@class='Checkout_btn']");//
+	@FindBy(xpath = "//span[@class='change_prdt']")
+	WebElement ChangProduct;
+	@FindBy(xpath = "//button[@class='done_btn']")
+	WebElement Done;
+	@FindBy(xpath = "//span[@class='remove_prdt']")
+	WebElement Remove;
+	@FindBy(xpath = "//button[@class='no_btn']")
+	WebElement RemoveNo;
+	@FindBy(xpath = "//span[@class='Checkout_btn']")
+	WebElement Checkout;
 
 	// Constructor to initialize object
-	public CartPage(WebDriver dr) {
-		this.driver = dr;
+	public CartPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
 	public void ChangeButtonVerify() {
-		driver.findElement(ChangProduct).click();
+		ChangProduct.click();
 
 	}
 
 	public void DoneButtonVerify() {
-		driver.findElement(Done).click();
+		Done.click();
 
 	}
 
 	public void RemoveButtonVerify() {
-		driver.findElement(Remove).click();
+		Remove.click();
 	}
 
 	public void RemoveButtonNoVerify() {
-		driver.findElement(RemoveNo).click();
+		RemoveNo.click();
 
 	}
 
-	public void CheckoutButtonVerify() {
-		driver.findElement(Checkout).click();
+	public void CheckoutButtonVerify2() {
+		Checkout.click();
 
 	}
+
 }

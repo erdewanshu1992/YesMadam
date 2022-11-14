@@ -1,26 +1,26 @@
-package pages;
+package LiveWebPages;
 
 import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class HomePageMainCat {
 	WebDriver driver;
-	By MainCat = By.xpath("//div[@class='cat_card']");//
-	By SalonAtHome = By.xpath("//div[@class='cat_card']"); //
-	By Remove = By.xpath("");//
-	By RemoveNo = By.xpath("");//
-	By Checkout = By.xpath("");//
+	@FindBy(xpath = "//div[@class='cat_card']")
+	List<WebElement> MainCat;
+	@FindBy(xpath = "//div[@class='cat_card']")
+	WebElement SalonAtHome;
 
 	// Constructor to initialize object
-	public HomePageMainCat(WebDriver dr) {
-		this.driver = dr;
+	public HomePageMainCat(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
 	public void listOfAllHomePageMainCat() {
-		List<WebElement> allMainCats = driver.findElements(MainCat);
+		List<WebElement> allMainCats = MainCat;
 		System.out.println(allMainCats.size());
 
 		for (WebElement mainCat : allMainCats) {
@@ -30,7 +30,7 @@ public class HomePageMainCat {
 	}
 
 	public void SalonAtHomeVerify() {
-		driver.findElement(SalonAtHome).click();
+		SalonAtHome.click();
 
 	}
 
