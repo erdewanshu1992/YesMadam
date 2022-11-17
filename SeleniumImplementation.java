@@ -16,6 +16,11 @@ public class SeleniumImplementation {
 	public void click(WebElement element) {
 		element.click();
 	}
+		
+	public void sendkey(WebElement element) {
+		element.sendKeys(Keys.ARROW_DOWN);
+		element.sendKeys(Keys.ENTER);
+	}
 	public void clear (WebElement element) {
 		element.clear();
 	}
